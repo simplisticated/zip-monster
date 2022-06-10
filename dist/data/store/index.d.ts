@@ -1,4 +1,7 @@
-import { StateAreaCode, ZipCityState, ZipLocation } from "../../types";
-export declare const getZipCityStateList: () => ZipCityState[];
-export declare const getZipCoordinateList: () => ZipLocation[];
-export declare const getStateAreaCodes: () => StateAreaCode[];
+import { ZipCityState } from "../../types";
+declare class Store {
+    private _zipCityStateList?;
+    get zipCityStateList(): ZipCityState[];
+}
+declare const _default: Store;
+export default _default;

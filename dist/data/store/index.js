@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getStateAreaCodes = exports.getZipCoordinateList = exports.getZipCityStateList = void 0;
 const getZipCityStateList = () => {
     const data = [
         require("../resources/zip-codes/alabama").default,
@@ -59,7 +58,6 @@ const getZipCityStateList = () => {
         return previous.concat(current);
     }, []);
 };
-exports.getZipCityStateList = getZipCityStateList;
 const getZipCoordinateList = () => {
     return require("../resources/zip-location").default.map((el) => {
         return {
@@ -71,8 +69,15 @@ const getZipCoordinateList = () => {
         };
     });
 };
-exports.getZipCoordinateList = getZipCoordinateList;
 const getStateAreaCodes = () => {
     return require("../resources/state-area-codes").default;
 };
-exports.getStateAreaCodes = getStateAreaCodes;
+class Store {
+    get zipCityStateList() {
+        if (!this._zipCityStateList) {
+            this._zipCityStateList = getZipCityStateList();
+        }
+        return this._zipCityStateList;
+    }
+}
+exports.default = new Store();
