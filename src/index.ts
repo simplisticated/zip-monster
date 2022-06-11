@@ -1,11 +1,16 @@
-import store from "./data/store"
-import { StatePostalCode } from "./types"
+import store from "./data/store";
 
 export default class ZipMonster {
 
-    public static getStateCodeFromZipCode = (
+    public static getZipData = (
         zipCode: string
-    ): StatePostalCode | undefined => {
-        return store.zipCityStateList.find(state => state.zip === zipCode)?.stateCode;
+    ) => {
+        const zipCityState = store.zipCityStateList.find(state => state.zip === zipCode);
+        
+        if (zipCityState) {
+            return {
+                ...zipCityState
+            };
+        }
     }
 }
