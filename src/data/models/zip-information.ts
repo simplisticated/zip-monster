@@ -1,6 +1,6 @@
 import { isZipType, ZipType } from "../../types/zip-type";
 import { isStatePostalCode, StatePostalCode } from "../../types/state-postal-code";
-import { isLocation } from "./location";
+import { isLocation, Location } from "./location";
 
 export interface ZipInformation {
     stateCode: StatePostalCode,
