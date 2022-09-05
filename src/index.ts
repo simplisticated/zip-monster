@@ -1,16 +1,3 @@
-import store from "./data/store";
+import { ZipMonster } from "./engine"
 
-export default class ZipMonster {
-
-    public static getZipData = (
-        zipCode: string
-    ) => {
-        const zipCityState = store.zipCityStateList.find(state => state.zip === zipCode);
-        
-        if (zipCityState) {
-            return {
-                ...zipCityState
-            };
-        }
-    }
-}
+export default ZipMonster
