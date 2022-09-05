@@ -6,7 +6,7 @@ test("Find Boston by exact zip code", () => {
     const result = ZipMonster.find({
         zip: "02109"
     });
-    
+
     if (result.length > 0) {
         expect(result[0].city).toBe("Boston");
     } else {
@@ -40,7 +40,7 @@ test("Find Boston by part of zip code and part of name", () => {
         }
     });
     const boston = result.filter(el => el.city === "Boston");
-    
+
     if (result) {
         expect(result.length).toBeGreaterThan(0);
     } else {
@@ -66,7 +66,7 @@ test("Alaska is further to north than Boston", () => {
         }
     });
     const hasAlaska = result.find(el => el.stateCode === StatePostalCode.AK) !== undefined;
-    
+
     if (result.length > 0) {
         expect(hasAlaska).toBe(true);
     } else {
@@ -84,4 +84,43 @@ test("Wrong zip code and name", () => {
         city: "Boston"
     });
     expect(result.length).toBe(0);
+})
+
+test("Find cities between Austin and Oklahoma City", () => {
+    const Austin = ZipMonster.find({
+        city: "Austin",
+        stateCode: "TX",
+        withLocationOnly: true
+    })[0];
+    const placesToNorthFromAustin = ZipMonster.find({
+        location: {
+            latitude: {
+                value: Austin.location!.latitude,
+                direction: "to-north"
+            },
+            longitude: {
+                value: Austin.location!.longitude,
+                direction: "to-east"
+            }
+        }
+    });
+    
+    const OklahomaCity = ZipMonster.find({
+        city: "Oklahoma City",
+        stateCode: "OK",
+        withLocationOnly: true
+    })[0];
+    const placesBetweenAustinAndOklahomaCity = ZipMonster.find({
+        location: {
+            latitude: {
+                value: OklahomaCity.location!.latitude,
+                direction: "to-south"
+            },
+            longitude: {
+                value: OklahomaCity.location!.longitude,
+                direction: "to-west"
+            }
+        }
+    }, placesToNorthFromAustin);
+    expect(placesBetweenAustinAndOklahomaCity.length).toBeGreaterThan(0);
 })
