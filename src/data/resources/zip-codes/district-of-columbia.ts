@@ -4,84 +4,132 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20001",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.9108918075238,
+            "longitude": -77.0182314627923
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20002",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.9017811018368,
+            "longitude": -76.9906627909677
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20003",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.8835313325318,
+            "longitude": -76.9899508515443
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20004",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.8958300841122,
+            "longitude": -77.0237664080997
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20005",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.9067286487176,
+            "longitude": -77.0311528560723
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20006",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.896792,
+            "longitude": -77.044752
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20007",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.9149055610481,
+            "longitude": -77.0732175097113
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20008",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.9370217871729,
+            "longitude": -77.0599765005161
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20009",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.920099650925,
+            "longitude": -77.0367835188112
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20010",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.9329373054238,
+            "longitude": -77.0348835666415
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20011",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.9521939144849,
+            "longitude": -77.0212440047481
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20012",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.9757240522584,
+            "longitude": -77.027988165284
+        }
     },
     {
         "stateCode": "DC",
@@ -95,42 +143,66 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20015",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.965568592558,
+            "longitude": -77.0678570547868
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20016",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.9380686813378,
+            "longitude": -77.0855608827784
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20017",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.9372565408002,
+            "longitude": -76.9925222774161
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20018",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.9271136128652,
+            "longitude": -76.974813213764
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20019",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.8915466290425,
+            "longitude": -76.9382513736744
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20020",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.8596644487048,
+            "longitude": -76.9737810527888
+        }
     },
     {
         "stateCode": "DC",
@@ -151,7 +223,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20024",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.8768701171039,
+            "longitude": -77.0160239138764
+        }
     },
     {
         "stateCode": "DC",
@@ -186,7 +262,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20032",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.8339574342172,
+            "longitude": -77.0010520883817
+        }
     },
     {
         "stateCode": "DC",
@@ -207,14 +287,22 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20036",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.9092497180357,
+            "longitude": -77.0428188005357
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20037",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.9015131669802,
+            "longitude": -77.0505939214322
+        }
     },
     {
         "stateCode": "DC",
@@ -270,7 +358,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20045",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.8967314578683,
+            "longitude": -77.0307977794748
+        }
     },
     {
         "stateCode": "DC",
@@ -312,14 +404,22 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20052",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.9001263334965,
+            "longitude": -77.0469808669205
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20053",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8841215950302,
+            "longitude": -77.0112238100873
+        }
     },
     {
         "stateCode": "DC",
@@ -340,7 +440,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20057",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.909223,
+            "longitude": -77.075216
+        }
     },
     {
         "stateCode": "DC",
@@ -389,7 +493,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20064",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.938497,
+            "longitude": -77.00099
+        }
     },
     {
         "stateCode": "DC",
@@ -550,7 +658,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20202",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8870707934288,
+            "longitude": -77.0210102866691
+        }
     },
     {
         "stateCode": "DC",
@@ -564,7 +676,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20204",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8855585443565,
+            "longitude": -77.014429327998
+        }
     },
     {
         "stateCode": "DC",
@@ -711,7 +827,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20228",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8864117098318,
+            "longitude": -77.0302818910281
+        }
     },
     {
         "stateCode": "DC",
@@ -725,7 +845,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20230",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8937940582929,
+            "longitude": -77.0327979425452
+        }
     },
     {
         "stateCode": "DC",
@@ -774,7 +898,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20240",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8944563004163,
+            "longitude": -77.042604651265
+        }
     },
     {
         "stateCode": "DC",
@@ -802,7 +930,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20245",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8933396214153,
+            "longitude": -77.0444595291628
+        }
     },
     {
         "stateCode": "DC",
@@ -830,7 +962,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20260",
-        "zipType": "Non-Unique"
+        "zipType": "Non-Unique",
+        "location": {
+            "latitude": 38.8836690239311,
+            "longitude": -77.0250359207485
+        }
     },
     {
         "stateCode": "DC",
@@ -921,7 +1057,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20307",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.974965937034,
+            "longitude": -77.0304705617293
+        }
     },
     {
         "stateCode": "DC",
@@ -942,7 +1082,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20317",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.933539,
+            "longitude": -77.008883
+        }
     },
     {
         "stateCode": "DC",
@@ -956,7 +1100,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20319",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8655155730304,
+            "longitude": -77.0177880309352
+        }
     },
     {
         "stateCode": "DC",
@@ -1005,7 +1153,11 @@ export default [
         "city": "Naval Anacost Annex",
         "county": "District of Columbia",
         "zip": "20373",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8582388410371,
+            "longitude": -77.0081383189267
+        }
     },
     {
         "stateCode": "DC",
@@ -1054,7 +1206,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20390",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8790190686706,
+            "longitude": -76.9936954921427
+        }
     },
     {
         "stateCode": "DC",
@@ -1131,7 +1287,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20405",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8963769000934,
+            "longitude": -77.0425881580372
+        }
     },
     {
         "stateCode": "DC",
@@ -1222,7 +1382,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20418",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8928003867531,
+            "longitude": -77.0477644121426
+        }
     },
     {
         "stateCode": "DC",
@@ -1285,7 +1449,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20427",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.9020574614624,
+            "longitude": -77.0475580071821
+        }
     },
     {
         "stateCode": "DC",
@@ -1495,7 +1663,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20506",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8970713366717,
+            "longitude": -77.0387279202164
+        }
     },
     {
         "stateCode": "DC",
@@ -1523,7 +1695,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20510",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8927801463419,
+            "longitude": -77.0068900299142
+        }
     },
     {
         "stateCode": "DC",
@@ -1544,7 +1720,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20520",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.894759168212,
+            "longitude": -77.048407021752
+        }
     },
     {
         "stateCode": "DC",
@@ -1649,7 +1829,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20535",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8944668384585,
+            "longitude": -77.024844280102
+        }
     },
     {
         "stateCode": "DC",
@@ -1684,7 +1868,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20540",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.887929223965,
+            "longitude": -77.0047134912338
+        }
     },
     {
         "stateCode": "DC",
@@ -1747,7 +1935,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20551",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8928020964607,
+            "longitude": -77.0457999073765
+        }
     },
     {
         "stateCode": "DC",
@@ -1761,7 +1953,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20553",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.886945529525,
+            "longitude": -77.022968376453
+        }
     },
     {
         "stateCode": "DC",
@@ -1803,21 +1999,33 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20560",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8882329734189,
+            "longitude": -77.0259189934998
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20565",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8906303856634,
+            "longitude": -77.0192113218973
+        }
     },
     {
         "stateCode": "DC",
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20566",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.8955700880262,
+            "longitude": -77.055127474404
+        }
     },
     {
         "stateCode": "DC",
@@ -1929,7 +2137,11 @@ export default [
         "city": "Washington",
         "county": "District of Columbia",
         "zip": "20593",
-        "zipType": "Unique"
+        "zipType": "Unique",
+        "location": {
+            "latitude": 38.866713319724,
+            "longitude": -77.0101867928751
+        }
     },
     {
         "stateCode": "DC",
