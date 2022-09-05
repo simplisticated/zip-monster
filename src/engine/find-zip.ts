@@ -1,7 +1,6 @@
 import store from "../data/store";
 import { ZipInformation } from "../data/models/zip-information";
 import { ZipType } from "../types/zip-type";
-import { StatePostalCode } from "../types/state-postal-code";
 
 export const findZip = (filter?: ZipFilter, source?: ZipInformation[]): ZipInformation[] => {
     let result = Array.from(
@@ -14,7 +13,7 @@ export const findZip = (filter?: ZipFilter, source?: ZipInformation[]): ZipInfor
 
     const applyStringFilter = (filter: string, stringFieldName: keyof ZipInformation) => {
         const searchValue = filter;
-        result = result.filter(el => el[stringFieldName] === searchValue);
+        result = result.filter(el => el[stringFieldName]!.toString() === searchValue);
     }
 
     const applyStringFlexibleFilter = (filter: ZipSearch_StringFlexibleFilter, stringFieldName: keyof ZipInformation) => {
@@ -164,6 +163,10 @@ export const findZip = (filter?: ZipFilter, source?: ZipInformation[]): ZipInfor
         );
     }
 
+    if (filter.withLocationOnly) {
+        result = result.filter(el => el.location !== undefined);
+    }
+
     return result;
 }
 
@@ -200,8 +203,9 @@ export interface ZipSearch_LocationFlexibleFilter {
 export interface ZipFilter {
     zip?: string | ZipSearch_StringFlexibleFilter | RegExp,
     zipType?: ZipType,
-    stateCode?: StatePostalCode | ZipSearch_StringFlexibleFilter | RegExp,
+    stateCode?: string | ZipSearch_StringFlexibleFilter | RegExp,
     county?: string | ZipSearch_StringFlexibleFilter | RegExp,
     city?: string | ZipSearch_StringFlexibleFilter | RegExp,
-    location?: ZipSearch_LocationFlexibleFilter
+    location?: ZipSearch_LocationFlexibleFilter,
+    withLocationOnly?: boolean
 }
