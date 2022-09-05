@@ -42,27 +42,19 @@ Basic knowledge of TypeScript and NPM.
 
 Everything starts from using `ZipMonster` object.
 
-There are several ways for searching zip code information:
+The search method is very flexible.
+
+### Search by zip code
+
+If you know exactly what zip code you're looking for, simply write:
 
 ```typescript
 ZipMonster.find({
-    byZip: "91360"
-})
-
-ZipMonster.find({
-    byCity: "Thousand Oaks"
-})
-
-ZipMonster.find({
-    byCounty: "Ventura"
-})
-
-ZipMonster.find({
-    byStateCode: "CA"
+    zip: "91360"
 })
 ```
 
-Method `ZipMonster.find` returns array of objects, where each object represents full information about one zip code. Example:
+In response, you will receive an array of `ZipInformation` objects that correspond to your search request. Each object includes the following data:
 
 ```typescript
 {
@@ -78,14 +70,133 @@ Method `ZipMonster.find` returns array of objects, where each object represents 
 }
 ```
 
-If you know exact zip code, the method will return array with one object, so you can easily get information about the place:
+To get city name, you can write:
 
 ```typescript
 const zipCodes = ZipMonster.find({
-    byZip: "91360"
+    zip: "91360"
 });
 const city = zipCodes[0].city // Thousand Oaks
 ```
+
+### Search by city
+
+You can also search by city:
+
+```typescript
+ZipMonster.find({
+    city: "Thousand Oaks"
+})
+```
+
+The expression above will return array of `ZipInformation` objects related to Thousand Oaks.
+
+Also, you can search by part of city name:
+
+```typescript
+ZipMonster.find({
+    city: {
+        value: "THOUSAND",
+        caseSensitive: false,
+        wholeMatch: false
+    }
+})
+```
+
+which returns zip code information for all cities that contain `THOUSAND` in the name.
+
+### Search by location
+
+Let's find cities that are further to north than Boston. That's a very simple task:
+
+```typescript
+const PaloAlto = ZipMonster.find({
+    city: "Palo Alto",
+    stateCode: "CA"
+})[0];
+const placesFurtherToNorth = ZipMonster.find({
+    location: {
+        latitude: {
+            value: PaloAlto.location!.latitude,
+            direction: "to-north"
+        }
+    }
+});
+placesFurtherToNorth.length // 21404 places further to north than Palo Alto
+```
+
+### Combine search parameters
+
+You can also combine search parameters with each other:
+
+```typescript
+const result = ZipMonster.find({
+    city: {
+        value: "THOUSAND",
+        caseSensitive: false,
+        wholeMatch: false
+    },
+    county: {
+        value: "Vent",
+        caseSensitive: false,
+        wholeMatch: false
+    },
+    stateCode: "CA"
+})
+const city = result[0].city // Thousand Oaks
+```
+
+### What about more complicated logic?
+
+Let's find all zip codes between Austin and Oklahoma City:
+
+```typescript
+// Take the first zip code in Austin
+const Austin = ZipMonster.find({
+    city: "Austin",
+    stateCode: "TX",
+    withLocationOnly: true
+})[0];
+
+// Find places to north and east from Austin
+const placesToNorthFromAustin = ZipMonster.find({
+    location: {
+        latitude: {
+            value: Austin.location!.latitude,
+            direction: "to-north"
+        },
+        longitude: {
+            value: Austin.location!.longitude,
+            direction: "to-east"
+        }
+    }
+});
+
+// Take the first zip code in Oklahoma City
+const OklahomaCity = ZipMonster.find({
+    city: "Oklahoma City",
+    stateCode: "OK",
+    withLocationOnly: true
+})[0];
+
+// Find places to south and west from Oklahoma City, but stop at Austin
+const placesBetweenAustinAndOklahomaCity = ZipMonster.find({
+    location: {
+        latitude: {
+            value: OklahomaCity.location!.latitude,
+            direction: "to-south"
+        },
+        longitude: {
+            value: OklahomaCity.location!.longitude,
+            direction: "to-west"
+        }
+    }
+}, placesToNorthFromAustin);
+
+placesBetweenAustinAndOklahomaCity.length // 79 zip codes found
+```
+
+### Other cases
 
 If you don't use any filter with the method, it will return information about **all existing zip codes**:
 
