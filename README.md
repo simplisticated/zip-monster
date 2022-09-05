@@ -40,7 +40,59 @@ Basic knowledge of TypeScript and NPM.
 
 ## Usage
 
-This section is not written yet.
+Everything starts from using `ZipMonster` object.
+
+There are several ways for searching zip code information:
+
+```typescript
+ZipMonster.find({
+    byZip: "91360"
+})
+
+ZipMonster.find({
+    byCity: "Thousand Oaks"
+})
+
+ZipMonster.find({
+    byCounty: "Ventura"
+})
+
+ZipMonster.find({
+    byStateCode: "CA"
+})
+```
+
+Method `ZipMonster.find` returns array of objects, where each object represents full information about one zip code. Example:
+
+```typescript
+{
+    stateCode: "CA",
+    city: "Thousand Oaks",
+    county: "Ventura",
+    zip: "91360",
+    zipType: "Non-Unique",
+    location: {
+        latitude: 34.2090940366232,
+        longitude: -118.875059125606
+    }
+}
+```
+
+If you know exact zip code, the method will return array with one object, so you can easily get information about the place:
+
+```typescript
+const zipCodes = ZipMonster.find({
+    byZip: "91360"
+});
+const city = zipCodes[0].city // Thousand Oaks
+```
+
+If you don't use any filter with the method, it will return information about **all existing zip codes**:
+
+```typescript
+const zipCodes = ZipMonster.find();
+zipCodes.length // more than 40k zip codes in the array
+```
 
 ## License
 
