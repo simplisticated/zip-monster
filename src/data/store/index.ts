@@ -1,6 +1,8 @@
-import { StateAreaCode, ZipCityState, ZipLocation } from "../../types";
+import { StateAreaCode } from "../models/state-area-code";
+import { ZipInformation } from "../models/zip-information";
+import { ZipLocation } from "../models/zip-location";
 
-const getZipCityStateList = (): ZipCityState[] => {
+const getZipCodesInformation = (): ZipInformation[] => {
     const data = [
         require("../resources/zip-codes/alabama").default,
         require("../resources/zip-codes/alaska").default,
@@ -82,14 +84,30 @@ const getStateAreaCodes = (): StateAreaCode[] => {
 
 class Store {
 
-    private _zipCityStateList?: ZipCityState[]
+    private _zipCodesInformation?: ZipInformation[]
 
-    public get zipCityStateList(): ZipCityState[] {
-        if (!this._zipCityStateList) {
-            this._zipCityStateList = getZipCityStateList();
+    public get zipCodesInformation(): ZipInformation[] {
+        if (!this.isLoaded()) {
+            this.load();
         }
 
-        return this._zipCityStateList;
+        return this._zipCodesInformation ?? [];
+    }
+
+    private _isLoaded = false
+
+    public isLoaded = () => {
+        return this._isLoaded;
+    }
+
+    public load = () => {
+        this._zipCodesInformation = getZipCodesInformation();
+        this._isLoaded = true;
+    }
+
+    public unload = () => {
+        this._zipCodesInformation = undefined;
+        this._isLoaded = false;
     }
 }
 
