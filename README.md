@@ -40,9 +40,11 @@ Basic knowledge of TypeScript and NPM.
 
 ## Usage
 
-Everything starts from using `ZipMonster` object.
+Everything starts from `ZipMonster` object.
 
-The search method is very flexible.
+The main method is `ZipMonster.find`. It's a super flexible way to search the information.
+
+----
 
 ### Search by zip code
 
@@ -79,6 +81,8 @@ const zipCodes = ZipMonster.find({
 const city = zipCodes[0].city // Thousand Oaks
 ```
 
+----
+
 ### Search by city
 
 You can also search by city:
@@ -105,14 +109,49 @@ ZipMonster.find({
 
 which returns zip code information for all cities that contain `THOUSAND` in the name.
 
+----
+
+### Search by county
+
+```typescript
+ZipMonster.find({
+    county: "Vermont"
+})
+```
+
+or
+
+```typescript
+ZipMonster.find({
+    county: {
+        value: "vermont",
+        caseSensitive: false,
+        wholeMatch: true
+    }
+})
+```
+
+----
+
+### Search by state
+
+```typescript
+ZipMonster.find({
+    stateCode: "CA"
+})
+```
+
+----
+
 ### Search by location
 
-Let's find cities that are further to north than Boston. That's a very simple task:
+Let's find cities that are further to north than Palo Alto. That's a very simple task:
 
 ```typescript
 const PaloAlto = ZipMonster.find({
     city: "Palo Alto",
-    stateCode: "CA"
+    stateCode: "CA",
+    withLocationOnly: true
 })[0];
 const placesFurtherToNorth = ZipMonster.find({
     location: {
@@ -122,7 +161,7 @@ const placesFurtherToNorth = ZipMonster.find({
         }
     }
 });
-placesFurtherToNorth.length // 21404 places further to north than Palo Alto
+placesFurtherToNorth.length // 21404 places are further to north than Palo Alto
 ```
 
 ### Combine search parameters
