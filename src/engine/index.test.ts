@@ -120,7 +120,8 @@ test("Find cities between Austin and Oklahoma City", () => {
                 value: OklahomaCity.location!.longitude,
                 direction: "to-west"
             }
-        }
-    }, placesToNorthFromAustin);
+        },
+        source: placesToNorthFromAustin
+    });
     expect(placesBetweenAustinAndOklahomaCity.length).toBeGreaterThan(0);
 })
