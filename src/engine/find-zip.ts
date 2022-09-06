@@ -1,15 +1,17 @@
 import store from "../data/store";
-import { ZipInformation } from "../data/models/zip-information";
-import { ZipType } from "../types/zip-type";
+import { isZipInformation, ZipInformation } from "../data/models/zip-information";
+import { isZipType, ZipType } from "../types/zip-type";
 
-export const findZip = (filter?: ZipFilter, source?: ZipInformation[]): ZipInformation[] => {
-    let result = Array.from(
-        source ?? store.zipCodesInformation
-    );
-
-    if (!filter) {
-        return result;
+export const findZip = (filter?: ZipFilter): ZipInformation[] => {
+    if (!isZipFilter(filter)) {
+        return Array.from(
+            store.zipCodesInformation
+        );
     }
+
+    let result = Array.from(
+        filter.source ?? store.zipCodesInformation
+    );
 
     const applyStringFilter = (filter: string, stringFieldName: keyof ZipInformation) => {
         const searchValue = filter;
@@ -189,14 +191,58 @@ const is_zipSearch_stringFlexibleFilter = (obj: any): obj is ZipSearch_StringFle
     }
 }
 
+export interface ZipSearch_LocationFlexibleFilter_LatitudeCondition {
+    value: number,
+    direction: "to-north" | "to-south" | "here"
+}
+
+const is_zipSearch_locationFlexibleFilter_latitudeCondition = (obj: any): obj is ZipSearch_LocationFlexibleFilter_LatitudeCondition => {
+    if (typeof obj === "object") {
+        const requirements = [
+            typeof obj["value"] === "number",
+            typeof obj["direction"] === "string"
+        ];
+        return !requirements.includes(false);
+    } else {
+        return false;
+    }
+}
+
+export interface ZipSearch_LocationFlexibleFilter_LongitudeCondition {
+    value: number,
+    direction: "to-east" | "to-west" | "here"
+}
+
+const is_zipSearch_locationFlexibleFilter_longitudeCondition = (obj: any): obj is ZipSearch_LocationFlexibleFilter_LongitudeCondition => {
+    if (typeof obj === "object") {
+        const requirements = [
+            typeof obj["value"] === "number",
+            typeof obj["direction"] === "string"
+        ];
+        return !requirements.includes(false);
+    } else {
+        return false;
+    }
+}
+
 export interface ZipSearch_LocationFlexibleFilter {
-    latitude?: {
-        value: number,
-        direction: "to-north" | "to-south" | "here"
-    },
-    longitude?: {
-        value: number,
-        direction: "to-east" | "to-west" | "here"
+    latitude?: ZipSearch_LocationFlexibleFilter_LatitudeCondition,
+    longitude?: ZipSearch_LocationFlexibleFilter_LongitudeCondition
+}
+
+const is_zipSearch_locationFlexibleFilter = (obj: any): obj is ZipSearch_LocationFlexibleFilter => {
+    if (typeof obj === "object") {
+        const requirements = [
+            "latitude" in obj
+                ? is_zipSearch_locationFlexibleFilter_latitudeCondition(obj["latitude"])
+                : true,
+            "longitude" in obj
+                ? is_zipSearch_locationFlexibleFilter_longitudeCondition(obj["longitude"])
+                : true
+        ];
+        return !requirements.includes(false);
+    } else {
+        return false;
     }
 }
 
@@ -207,5 +253,40 @@ export interface ZipFilter {
     county?: string | ZipSearch_StringFlexibleFilter | RegExp,
     city?: string | ZipSearch_StringFlexibleFilter | RegExp,
     location?: ZipSearch_LocationFlexibleFilter,
-    withLocationOnly?: boolean
+    withLocationOnly?: boolean,
+    source?: ZipInformation[]
+}
+
+const isZipFilter = (obj: any): obj is ZipFilter => {
+    if (typeof obj === "object") {
+        const requirements = [
+            "zip" in obj
+                ? typeof obj["zip"] === "string" || is_zipSearch_stringFlexibleFilter(obj["zip"]) || obj["zip"] instanceof RegExp
+                : true,
+            "zipType" in obj
+                ? typeof obj["zipType"] === "string" && isZipType(obj["zipType"])
+                : true,
+            "stateCode" in obj
+                ? typeof obj["stateCode"] === "string" || is_zipSearch_stringFlexibleFilter(obj["stateCode"]) || obj["stateCode"] instanceof RegExp
+                : true,
+            "county" in obj
+                ? typeof obj["county"] === "string" || is_zipSearch_stringFlexibleFilter(obj["county"]) || obj["county"] instanceof RegExp
+                : true,
+            "city" in obj
+                ? typeof obj["city"] === "string" || is_zipSearch_stringFlexibleFilter(obj["city"]) || obj["city"] instanceof RegExp
+                : true,
+            "location" in obj
+                ? is_zipSearch_locationFlexibleFilter(obj["location"])
+                : true,
+            "withLocationOnly" in obj
+                ? typeof obj["withLocationOnly"] === "boolean"
+                : true,
+            "source" in obj
+                ? Array.isArray(obj["source"]) && obj["source"].every(isZipInformation)
+                : true
+        ];
+        return !requirements.includes(false);
+    } else {
+        return false;
+    }
 }
