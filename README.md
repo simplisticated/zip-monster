@@ -164,6 +164,8 @@ const placesFurtherToNorth = ZipMonster.find({
 placesFurtherToNorth.length // 21404 places are further to north than Palo Alto
 ```
 
+----
+
 ### Combine search parameters
 
 You can also combine search parameters with each other:
@@ -184,6 +186,8 @@ const result = ZipMonster.find({
 })
 const city = result[0].city // Thousand Oaks
 ```
+
+----
 
 ### What about more complicated logic?
 
@@ -235,6 +239,8 @@ const placesBetweenAustinAndOklahomaCity = ZipMonster.find({
 placesBetweenAustinAndOklahomaCity.length // 79 zip codes found
 ```
 
+----
+
 ### Other cases
 
 If you don't use any filter with the method, it will return information about **all existing zip codes**:
@@ -243,6 +249,8 @@ If you don't use any filter with the method, it will return information about **
 const zipCodes = ZipMonster.find();
 zipCodes.length // more than 40k zip codes in the array
 ```
+
+----
 
 ## License
 
