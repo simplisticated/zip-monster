@@ -233,8 +233,9 @@ const placesBetweenAustinAndOklahomaCity = ZipMonster.find({
             value: OklahomaCity.location!.longitude,
             direction: "to-west"
         }
-    }
-}, placesToNorthFromAustin);
+    },
+    source: placesToNorthFromAustin
+});
 
 placesBetweenAustinAndOklahomaCity.length // 79 zip codes found
 ```
