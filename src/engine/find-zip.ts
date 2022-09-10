@@ -174,7 +174,7 @@ export const findZip = (filter?: ZipFilter): ZipInformation[] => {
 
 export interface ZipSearch_StringFlexibleFilter {
     value: string,
-    caseSensitive: boolean,
+    caseSensitive?: boolean,
     wholeMatch: boolean
 }
 
@@ -182,7 +182,7 @@ const is_zipSearch_stringFlexibleFilter = (obj: any): obj is ZipSearch_StringFle
     if (typeof obj === "object") {
         const requirements = [
             typeof obj["value"] === "string",
-            typeof obj["caseSensitive"] === "boolean",
+            "caseSensitive" in obj ? typeof obj["caseSensitive"] === "boolean" : true,
             typeof obj["wholeMatch"] === "boolean"
         ];
         return !requirements.includes(false);
