@@ -12,7 +12,7 @@
 
 ## At a Glance
 
-**ZipMonster** is a library that simplifies work with zip codes and addresses in the United States.
+**ZipMonster** is a library that simplifies work with zip codes and addresses in the United States. This solution is a reliable replacement for paid APIs that you can find on the Internet.
 
 ## How to Get Started
 
