@@ -12,7 +12,7 @@
 
 ## At a Glance
 
-**ZipMonster** is a library that simplifies work with zip codes and addresses in the United States.
+**ZipMonster** is a library that simplifies work with zip codes and addresses in the United States. This solution is a reliable replacement for paid APIs that you can find on the Internet.
 
 ## How to Get Started
 
@@ -36,7 +36,17 @@ import ZipMonster from '@russo-programmisto/zip-monster'
 
 ## Requirements
 
-Basic knowledge of TypeScript and NPM.
+It's strongly recommended to add `NODE_OPTIONS` flag to your `.env` file:
+
+```
+NODE_OPTIONS=--max-old-space-size=<AVAILABLE RAM SIZE IN MB>
+```
+
+For example, if you have 2GB RAM:
+
+```
+NODE_OPTIONS=--max-old-space-size=2048
+```
 
 ## Usage
 
