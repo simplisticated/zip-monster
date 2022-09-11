@@ -3,10 +3,14 @@ import { isZipInformation, ZipInformation } from "../data/models/zip-information
 import { isZipType, ZipType } from "../types/zip-type";
 
 export const findZip = (filter?: ZipFilter): ZipInformation[] => {
-    if (!isZipFilter(filter)) {
+    if (!filter) {
         return Array.from(
             store.zipCodesInformation
         );
+    }
+    
+    if (!isZipFilter(filter)) {
+        return [];
     }
 
     let result = Array.from(
