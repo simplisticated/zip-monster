@@ -1,6 +1,6 @@
 {
-    "name": "@russo-programmisto/zip-monster",
-    "version": "1.2.1",
+    "name": "@simplisticated/zip-monster",
+    "version": "1.3.0",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {

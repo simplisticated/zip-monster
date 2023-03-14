@@ -19,19 +19,19 @@
 Type in Terminal:
 
 ```
-npm install --save @russo-programmisto/zip-monster
+npm install --save @simplisticated/zip-monster
 ```
 
 or, if you prefer **yarn** over **npm**, type:
 
 ```
-yarn add @russo-programmisto/zip-monster
+yarn add @simplisticated/zip-monster
 ```
 
 Then add import instruction to your code:
 
 ```typescript
-import ZipMonster from '@russo-programmisto/zip-monster'
+import ZipMonster from '@simplisticated/zip-monster'
 ```
 
 ## Requirements
