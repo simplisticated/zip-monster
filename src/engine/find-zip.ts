@@ -1,6 +1,7 @@
 import store from "../data/store";
 import { isZipInformation, ZipInformation } from "../data/models/zip-information";
 import { isZipType, ZipType } from "../types/zip-type";
+import { isPointWithinRadius } from 'geolib';
 
 export const findZip = (filter?: ZipFilter): ZipInformation[] => {
     if (!filter) {
@@ -36,6 +37,16 @@ export const findZip = (filter?: ZipFilter): ZipInformation[] => {
         });
     }
 
+    const applyRadiusFilter = (latitude: number, longitude: number, radius: number) => {
+        result = result.filter(el => {
+            return isPointWithinRadius(
+                    { latitude: el.location!.latitude, longitude: el.location!.longitude },
+                    { latitude, longitude },
+                    radius
+                )
+        })
+    }
+
     const applyRegularExpressionFilter = (filter: RegExp, stringFieldName: keyof ZipInformation) => {
         const regularExpression = filter;
         result = result.filter(el => regularExpression.test(el[stringFieldName] as string));
@@ -48,36 +59,40 @@ export const findZip = (filter?: ZipFilter): ZipInformation[] => {
         if (latitudeRequirement || longitudeRequirement) {
             result = result.filter(el => el.location !== undefined);
 
-            if (latitudeRequirement) {
-                result = result.filter(el => {
-                    switch (latitudeRequirement.direction) {
-                        case "to-north": {
-                            return el.location!.latitude > latitudeRequirement.value;
+            if (latitudeRequirement && latitudeRequirement.direction === 'radius' && longitudeRequirement && latitudeRequirement.direction === 'radius' && filter.radius) {
+                applyRadiusFilter(latitudeRequirement.value, longitudeRequirement.value, filter.radius)
+            } else {
+                if (latitudeRequirement) {
+                    result = result.filter(el => {
+                        switch (latitudeRequirement.direction) {
+                            case "to-north": {
+                                return el.location!.latitude > latitudeRequirement.value;
+                            }
+                            case "to-south": {
+                                return el.location!.latitude < latitudeRequirement.value;
+                            }
+                            case "here": {
+                                return el.location!.latitude === latitudeRequirement.value;
+                            }
                         }
-                        case "to-south": {
-                            return el.location!.latitude < latitudeRequirement.value;
-                        }
-                        case "here": {
-                            return el.location!.latitude === latitudeRequirement.value;
-                        }
-                    }
-                });
-            }
+                    });
+                }
 
-            if (longitudeRequirement) {
-                result = result.filter(el => {
-                    switch (longitudeRequirement.direction) {
-                        case "to-east": {
-                            return el.location!.longitude > longitudeRequirement.value;
+                if (longitudeRequirement) {
+                    result = result.filter(el => {
+                        switch (longitudeRequirement.direction) {
+                            case "to-east": {
+                                return el.location!.longitude > longitudeRequirement.value;
+                            }
+                            case "to-west": {
+                                return el.location!.longitude < longitudeRequirement.value;
+                            }
+                            case "here": {
+                                return el.location!.longitude === longitudeRequirement.value;
+                            }
                         }
-                        case "to-west": {
-                            return el.location!.longitude < longitudeRequirement.value;
-                        }
-                        case "here": {
-                            return el.location!.longitude === longitudeRequirement.value;
-                        }
-                    }
-                });
+                    });
+                }
             }
         }
     }
@@ -197,7 +212,7 @@ const is_zipSearch_stringFlexibleFilter = (obj: any): obj is ZipSearch_StringFle
 
 export interface ZipSearch_LocationFlexibleFilter_LatitudeCondition {
     value: number,
-    direction: "to-north" | "to-south" | "here"
+    direction: "to-north" | "to-south" | "here" | "radius"
 }
 
 const is_zipSearch_locationFlexibleFilter_latitudeCondition = (obj: any): obj is ZipSearch_LocationFlexibleFilter_LatitudeCondition => {
@@ -214,7 +229,7 @@ const is_zipSearch_locationFlexibleFilter_latitudeCondition = (obj: any): obj is
 
 export interface ZipSearch_LocationFlexibleFilter_LongitudeCondition {
     value: number,
-    direction: "to-east" | "to-west" | "here"
+    direction: "to-east" | "to-west" | "here" | "radius"
 }
 
 const is_zipSearch_locationFlexibleFilter_longitudeCondition = (obj: any): obj is ZipSearch_LocationFlexibleFilter_LongitudeCondition => {
@@ -231,7 +246,8 @@ const is_zipSearch_locationFlexibleFilter_longitudeCondition = (obj: any): obj i
 
 export interface ZipSearch_LocationFlexibleFilter {
     latitude?: ZipSearch_LocationFlexibleFilter_LatitudeCondition,
-    longitude?: ZipSearch_LocationFlexibleFilter_LongitudeCondition
+    longitude?: ZipSearch_LocationFlexibleFilter_LongitudeCondition,
+    radius?: number
 }
 
 const is_zipSearch_locationFlexibleFilter = (obj: any): obj is ZipSearch_LocationFlexibleFilter => {
@@ -242,7 +258,8 @@ const is_zipSearch_locationFlexibleFilter = (obj: any): obj is ZipSearch_Locatio
                 : true,
             "longitude" in obj
                 ? is_zipSearch_locationFlexibleFilter_longitudeCondition(obj["longitude"])
-                : true
+                : true,
+            (obj?.latitude?.direction === 'radius' || obj?.longitude?.direction === 'radius') && obj.radius   
         ];
         return !requirements.includes(false);
     } else {
