@@ -190,26 +190,6 @@ placesFurtherToNorth.length // 21404 places are further to north than Palo Alto
 
 ----
 
-### Search by meter radius from location
-
-```typescript
-const inRadius = ZipMonster.find({
-    location: {
-        latitude: {
-            value: PaloAlto.location!.latitude,
-            direction: 'radius'
-        },
-        longitude: {
-            value: PaloAlto.location!.longitude,
-            direction: "radius"
-        },
-        radius: 50 * 1000 // 50 km
-    }
-})
-```
-
-----
-
 ### Combine search parameters
 
 You can also combine search parameters with each other:
