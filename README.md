@@ -42,12 +42,6 @@ Then add import instruction to your code:
 import ZipMonster from '@simplisticated/zip-monster'
 ```
 
-or
-
-```typescript
-import Z from '@simplisticated/zip-monster'
-```
-
 ## Requirements
 
 It's strongly recommended to add `NODE_OPTIONS` flag to your `.env` file:
@@ -64,9 +58,9 @@ NODE_OPTIONS=--max-old-space-size=2048
 
 ## Usage
 
-Everything starts from `Z` object.
+Everything starts from `ZipMonster` object.
 
-The main method is `Z.find`. It's a super flexible way to search the information.
+The main method is `ZipMonster.find`. It's a super flexible way to search the information.
 
 ----
 
@@ -75,7 +69,7 @@ The main method is `Z.find`. It's a super flexible way to search the information
 If you know exactly what zip code you're looking for, simply write:
 
 ```typescript
-Z.find({
+ZipMonster.find({
     zip: "91360"
 })
 ```
@@ -99,7 +93,7 @@ In response, you will receive an array of `ZipInformation` objects that correspo
 To get city name, you can write:
 
 ```typescript
-const zipCodes = Z.find({
+const zipCodes = ZipMonster.find({
     zip: "91360"
 });
 const city = zipCodes[0].city // Thousand Oaks
@@ -112,7 +106,7 @@ const city = zipCodes[0].city // Thousand Oaks
 You can also search by city:
 
 ```typescript
-Z.find({
+ZipMonster.find({
     city: "Thousand Oaks"
 })
 ```
@@ -122,7 +116,7 @@ The expression above will return array of `ZipInformation` objects related to Th
 Also, you can search by part of city name:
 
 ```typescript
-Z.find({
+ZipMonster.find({
     city: {
         value: "THOUSAND",
         caseSensitive: false,
@@ -138,7 +132,7 @@ which returns zip code information for all cities that contain `THOUSAND` in the
 ### Search by county
 
 ```typescript
-Z.find({
+ZipMonster.find({
     county: "Vermont"
 })
 ```
@@ -146,7 +140,7 @@ Z.find({
 or
 
 ```typescript
-Z.find({
+ZipMonster.find({
     county: {
         value: "vermont",
         caseSensitive: false,
@@ -160,7 +154,7 @@ Z.find({
 ### Search by state
 
 ```typescript
-Z.find({
+ZipMonster.find({
     stateCode: "CA"
 })
 ```
@@ -172,12 +166,12 @@ Z.find({
 Let's find cities that are further to north than Palo Alto. That's a very simple task:
 
 ```typescript
-const PaloAlto = Z.find({
+const PaloAlto = ZipMonster.find({
     city: "Palo Alto",
     stateCode: "CA",
     withLocationOnly: true
 })[0];
-const placesFurtherToNorth = Z.find({
+const placesFurtherToNorth = ZipMonster.find({
     location: {
         latitude: {
             value: PaloAlto.location!.latitude,
@@ -195,7 +189,7 @@ placesFurtherToNorth.length // 21404 places are further to north than Palo Alto
 You can also combine search parameters with each other:
 
 ```typescript
-const result = Z.find({
+const result = ZipMonster.find({
     city: {
         value: "THOUSAND",
         caseSensitive: false,
@@ -219,14 +213,14 @@ Let's find all zip codes between Austin and Oklahoma City:
 
 ```typescript
 // Take the first zip code in Austin
-const Austin = Z.find({
+const Austin = ZipMonster.find({
     city: "Austin",
     stateCode: "TX",
     withLocationOnly: true
 })[0];
 
 // Find places to north and east from Austin
-const placesToNorthFromAustin = Z.find({
+const placesToNorthFromAustin = ZipMonster.find({
     location: {
         latitude: {
             value: Austin.location!.latitude,
@@ -240,14 +234,14 @@ const placesToNorthFromAustin = Z.find({
 });
 
 // Take the first zip code in Oklahoma City
-const OklahomaCity = Z.find({
+const OklahomaCity = ZipMonster.find({
     city: "Oklahoma City",
     stateCode: "OK",
     withLocationOnly: true
 })[0];
 
 // Find places to south and west from Oklahoma City, but stop at Austin
-const placesBetweenAustinAndOklahomaCity = Z.find({
+const placesBetweenAustinAndOklahomaCity = ZipMonster.find({
     location: {
         latitude: {
             value: OklahomaCity.location!.latitude,
@@ -271,7 +265,7 @@ placesBetweenAustinAndOklahomaCity.length // 79 zip codes found
 If you don't use any filter with the method, it will return information about **all existing zip codes**:
 
 ```typescript
-const zipCodes = Z.find();
+const zipCodes = ZipMonster.find();
 zipCodes.length // more than 40k zip codes in the array
 ```
 
